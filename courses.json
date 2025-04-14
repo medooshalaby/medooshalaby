@@ -1,0 +1,58 @@
+{
+  "courses": [
+    {
+      "id": "montage",
+      "name": "كورس مونتاج",
+      "lessons": [
+        { "id": "lesson-1", "title": "الدرس الأول: مقدمة", "videoUrl": "videos/montage/lesson1.mp4" },
+        { "id": "lesson-2", "title": "الدرس الثاني: واجهة البرنامج", "videoUrl": "videos/montage/lesson2.mp4" },
+        { "id": "lesson-3", "title": "الدرس الثالث: القص واللصق", "videoUrl": "videos/montage/lesson3.mp4" },
+        { "id": "lesson-4", "title": "الدرس الرابع: الانتقالات", "videoUrl": "videos/montage/lesson4.mp4" },
+        { "id": "lesson-5", "title": "الدرس الخامس: تصدير الفيديو", "videoUrl": "videos/montage/lesson5.mp4" }
+      ]
+    },
+    {
+      "id": "photoshop",
+      "name": "كورس فوتوشوب",
+      "lessons": [
+        { "id": "lesson-1", "title": "الدرس الأول: المقدمة", "videoUrl": "videos/photoshop/lesson1.mp4" },
+        { "id": "lesson-2", "title": "الدرس الثاني: الأدوات الأساسية", "videoUrl": "videos/photoshop/lesson2.mp4" }
+      ]
+    },
+    {
+      "id": "advertising",
+      "name": "كورس اعلانات",
+      "lessons": [
+         { "id": "lesson-1", "title": "الدرس الأول: أنواع الإعلانات", "videoUrl": "videos/advertising/lesson1.mp4" }
+      ]
+    },
+     {
+      "id": "canva",
+      "name": "كورس كانفا",
+      "lessons": [
+         { "id": "lesson-1", "title": "الدرس الأول: تصميم بوستر", "videoUrl": "videos/canva/lesson1.mp4" }
+      ]
+    },
+     {
+      "id": "motion-graphics",
+      "name": "كورس موشن جرافيك",
+      "lessons": [
+         { "id": "lesson-1", "title": "الدرس الأول: أساسيات التحريك", "videoUrl": "videos/motion/lesson1.mp4" }
+      ]
+    },
+    {
+      "id": "ai-whiteboard",
+      "name": "كورس وايت بورد وذكاء اصطناعي",
+      "lessons": [
+         { "id": "lesson-1", "title": "الدرس الأول: مقدمة للذكاء الاصطناعي", "videoUrl": "videos/ai/lesson1.mp4" }
+      ]
+    },
+     {
+      "id": "misc-videos",
+      "name": "كورس فيديوهات متنوعة",
+      "lessons": [
+         { "id": "lesson-1", "title": "فيديو متنوع 1", "videoUrl": "videos/misc/lesson1.mp4" }
+      ]
+    }
+  ]
+}

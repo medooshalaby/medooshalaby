@@ -1,0 +1,612 @@
+/* General Styles */
+body {
+    font-family: 'Tahoma', sans-serif; /* Using a common Arabic-supported font */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    direction: rtl; /* Right-to-left direction */
+}
+
+header {
+    background-color: #007bff; /* Blue theme */
+    color: #fff;
+    padding: 1.2rem 0; /* Increased padding */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    background-color: #0056b3; /* Darker blue for nav */
+    margin: 0;
+    padding: 0.5rem 0; /* Added padding */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    /* text-decoration: underline; */ /* Removed underline */
+    /* opacity: 0.9; */ /* Removed opacity */
+    background-color: #004a99; /* Darker blue background on hover */
+    border-radius: 4px; /* Rounded corners on hover */
+    padding: 5px 10px; /* Add padding on hover for background visibility */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.2s ease-in-out; /* Add transition */
+}
+
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Remove flex for index page to allow centering */
+    /* display: flex; */ /* Commented out for index page */
+    /* gap: 20px; */ /* Commented out for index page */
+    /* flex-wrap: wrap; */ /* Commented out for index page */
+}
+
+/* Specific centering for login/register page */
+body:has(#login) main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    min-height: calc(100vh - 150px); /* Adjust based on header/footer height */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px; /* Increased padding */
+    margin-top: 30px; /* Increased margin */
+    background-color: #343a40; /* Darker gray background */
+    color: #f8f9fa; /* Lighter text color */
+    border-top: 3px solid #007bff; /* Blue top border */
+}
+
+/* Form Styles */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 0 auto 20px auto; /* Remove top margin, keep bottom */
+    border: 1px solid #e0e0e0; /* Add a subtle border */
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"], /* Added email type */
+form input[type="number"], /* Added number type */
+form select,
+form textarea { /* Added textarea */
+    width: calc(100% - 22px); /* Adjust width considering padding/border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add transition */
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add glow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out; /* Add transition */
+}
+
+form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+form button:active {
+     transform: translateY(0px); /* Press down effect */
+}
+
+/* Login/Register/Forgot Password Specific Styles */
+#login, #register, #forgot-password {
+    /* border: 1px solid #ddd; */ /* Remove basic border */
+    margin-top: 0; /* Remove top margin as main handles spacing */
+    padding: 30px 40px; /* Increase padding */
+    background: linear-gradient(145deg, #ffffff, #f9f9f9); /* Subtle gradient */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+                -5px -5px 15px rgba(255, 255, 255, 0.7); /* Neumorphic style shadow */
+    width: 100%; /* Ensure it takes the max-width from the form rule */
+    max-width: 450px; /* Slightly wider form */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+#login h2, #register h2, #forgot-password h2 {
+    /* background-color: #f8f9fa; */ /* Remove background */
+    padding: 0 0 20px 0; /* Adjust padding */
+    margin: 0 0 25px 0; /* Adjust margin */
+    border-bottom: 1px solid #eee;
+    /* border-top-left-radius: 8px; */ /* Remove radius */
+    /* border-top-right-radius: 8px; */ /* Remove radius */
+    text-align: center;
+    color: #0056b3; /* Use a theme color */
+    font-size: 1.8rem; /* Larger heading */
+}
+
+#login p, #register p, #forgot-password p {
+    text-align: center;
+    margin-top: 20px; /* Increase spacing */
+    font-size: 0.95rem;
+    color: #555;
+}
+
+#login p a, #register p a, #forgot-password p a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#login p a:hover, #register p a:hover, #forgot-password p a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Style the form specifically within these sections */
+#login form, #register form, #forgot-password form {
+    background: none; /* Remove inner form background */
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: none; /* Remove max-width */
+    margin: 0;
+}
+
+
+/* Course Page Styles */
+/* Course Page Specific Layout */
+/* Use a more specific selector for course pages if possible, e.g., body.course-page main */
+/* Assuming course pages might have a specific body class or ID */
+body:not(:has(#login)) main { /* Apply flex only if #login is NOT present */
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Ensure main content takes full width on login page */
+body:has(#login) #course-main-content {
+    width: 100%;
+}
+
+
+#course-sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    background-color: #f1f3f5; /* Slightly lighter background */
+    padding: 20px; /* Increased padding */
+    border-radius: 8px; /* Slightly more rounded corners */
+    height: fit-content; /* Adjust height to content */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    border-left: 1px solid #dee2e6; /* Subtle border on the left (for RTL) */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Add a subtle shadow */
+}
+
+#course-sidebar h3 {
+    margin-top: 0;
+    color: #0056b3;
+    border-bottom: 2px solid #007bff; /* Thicker border */
+    padding-bottom: 10px;
+    font-size: 1.4rem; /* Slightly larger */
+    margin-bottom: 15px; /* Add space below */
+}
+
+#course-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#course-sidebar ul li {
+    margin-bottom: 10px;
+}
+
+#course-sidebar ul li a {
+    text-decoration: none;
+    color: #343a40; /* Darker text */
+    display: block; /* Make the whole area clickable */
+    padding: 10px 15px; /* Increased padding */
+    border-radius: 5px; /* More rounded corners */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.1s ease; /* Smooth transition */
+    margin-right: -15px; /* Align text better */
+    margin-left: -15px;
+}
+#course-sidebar ul li a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    background-color: #e9ecef; /* Lighter background on hover */
+    transform: translateX(-3px); /* Slight move effect */
+}
+/* Style for the active link */
+#course-sidebar ul li a.active {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: inset 3px 0 0 #0056b3; /* Indicate active state */
+}
+
+
+#course-main-content {
+    flex-grow: 1; /* Allow main content to take remaining space */
+    min-width: 300px; /* Ensure content doesn't get too squished */
+    background-color: #ffffff; /* White background for content area */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* Style for individual content sections within the main area */
+#course-description,
+#assignments,
+#discussion,
+#certificate,
+.lesson { /* Apply common styles */
+    /* background-color: #fdfdfd; */ /* Removed specific background, inherit from main */
+    padding: 20px; /* Adjusted padding */
+    margin-bottom: 20px; /* Adjusted margin */
+    border: 1px solid #e9ecef;
+    border-radius: 6px; /* Slightly less rounded */
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); */ /* Reduced shadow */
+    transition: box-shadow 0.2s ease;
+    /* Initially hide lessons for JS control */
+    /* display: none; */ /* We will control this with JS */
+}
+
+/* Add a class to show the active lesson */
+.lesson.active-lesson {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Remove hover effect from the container, apply elsewhere if needed */
+/* #course-description:hover, ... */
+
+
+/* Common heading style for sections */
+#course-description h2,
+#assignments h3,
+#discussion h3,
+#certificate h3,
+.lesson h3 {
+    margin-top: 0;
+    color: #0056b3;
+    border-bottom: 1px solid #dee2e6; /* Slightly darker border */
+    padding-bottom: 10px; /* Increased padding */
+    margin-bottom: 20px; /* Increased margin */
+    font-size: 1.5rem; /* Consistent size */
+}
+
+/* Specific style for lesson sub-headings if needed */
+.lesson h4 {
+    font-size: 1.2em;
+    color: #343a40;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    /* border-bottom: none; */ /* Keep no border */
+}
+
+/* Style video containers if they exist */
+.lesson video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: #000; /* Black background for video player */
+}
+
+#assignments ul, #discussion ul {
+     list-style: disc;
+     padding-right: 20px; /* Indentation for RTL */
+     margin-top: 10px;
+}
+
+#discussion textarea {
+    display: block;
+    width: calc(100% - 22px); /* Adjust for padding/border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#discussion button,
+#certificate button {
+    background-color: #28a745; /* Green for actions */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+#discussion button:hover,
+#certificate button:hover {
+    background-color: #218838;
+}
+#certificate button:disabled {
+    background-color: #6c757d; /* Grey when disabled */
+    cursor: not-allowed;
+}
+
+/* Enrollment Request Styles */
+#enrollment-requests ul,
+#student-enrolled-courses ul,
+#student-available-courses ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+#enrollment-requests li,
+#student-available-courses li {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out elements */
+    align-items: center; /* Vertically align items */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 10px; /* Add gap between items */
+}
+#student-enrolled-courses li {
+     border-bottom: 1px solid #eee;
+     padding: 8px 0;
+     margin-bottom: 5px;
+}
+
+
+#enrollment-requests button,
+.request-enrollment {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    margin-right: 5px; /* Space between buttons */
+}
+
+.approve-request {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+    transition: background-color 0.2s ease-in-out; /* Add transition */
+}
+.approve-request:hover {
+    background-color: #218838;
+}
+
+.deny-request,
+.deny-account-request, /* Add class */
+.deny-discussion-post { /* Add class */
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+    transition: background-color 0.2s ease-in-out; /* Add transition */
+}
+.deny-request:hover,
+.deny-account-request:hover,
+.deny-discussion-post:hover {
+    background-color: #c82333;
+}
+
+.request-enrollment,
+.approve-account-request, /* Add class */
+.approve-discussion-post { /* Add class */
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    transition: background-color 0.2s ease-in-out; /* Add transition */
+}
+.request-enrollment:hover,
+.approve-account-request:hover,
+.approve-discussion-post:hover {
+    background-color: #0056b3;
+}
+.request-enrollment:disabled,
+.approve-account-request:disabled, /* Add class */
+.approve-discussion-post:disabled { /* Add class */
+    background-color: #6c757d;
+    border-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#student-available-courses li span,
+#enrollment-requests li span {
+    flex-grow: 1; /* Allow text to take available space */
+}
+#student-available-courses li a {
+    font-size: 0.9em;
+    margin-left: 10px; /* Space before button */
+}
+
+
+/* Dashboard Styles (Keep existing) */
+#dashboard-content ul {
+    /* list-style: disc; */ /* Removed default style */
+    padding-right: 20px; /* Indentation for RTL */
+}
+
+#dashboard-content li {
+    margin-bottom: 10px;
+}
+
+#dashboard-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#dashboard-content a:hover {
+    text-decoration: underline;
+}
+
+
+/* Dashboard Section Styling */
+#admin-dashboard,
+#instructor-dashboard,
+#student-dashboard {
+    background-color: #ffffff; /* White background for the main dashboard area */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease-out; /* Add fade-in animation */
+}
+
+#admin-dashboard h3,
+#instructor-dashboard h3,
+#student-dashboard h3 {
+    color: #0056b3;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+}
+
+/* Styling for inner sections/cards within dashboards */
+#admin-dashboard section,
+#instructor-dashboard section,
+#student-dashboard section {
+    background-color: #f8f9fa; /* Light grey background for cards */
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    animation: slideInUp 0.6s ease-out forwards; /* Add slide-in animation */
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(20px); /* Start slightly lower for animation */
+}
+
+/* Stagger the animation for sections */
+#admin-dashboard section:nth-child(1) { animation-delay: 0.1s; }
+#admin-dashboard section:nth-child(2) { animation-delay: 0.2s; }
+#admin-dashboard section:nth-child(3) { animation-delay: 0.3s; }
+#admin-dashboard section:nth-child(4) { animation-delay: 0.4s; }
+#admin-dashboard section:nth-child(5) { animation-delay: 0.5s; }
+/* Add more if needed */
+
+#instructor-dashboard section:nth-child(1) { animation-delay: 0.1s; }
+#instructor-dashboard section:nth-child(2) { animation-delay: 0.2s; }
+/* Add more if needed */
+
+#student-dashboard section:nth-child(1) { animation-delay: 0.1s; }
+#student-dashboard section:nth-child(2) { animation-delay: 0.2s; }
+#student-dashboard section:nth-child(3) { animation-delay: 0.3s; }
+/* Add more if needed */
+
+
+#admin-dashboard section:hover,
+#instructor-dashboard section:hover,
+#student-dashboard section:hover {
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#admin-dashboard section h4,
+#instructor-dashboard section h4,
+#student-dashboard section h4 {
+    color: #343a40;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+}
+
+/* Improve list item appearance in dashboard */
+#dashboard-content ul li {
+    padding: 8px 0;
+    transition: background-color 0.2s ease;
+}
+
+#dashboard-content ul li:hover {
+     background-color: #e9ecef; /* Slight highlight on hover */
+     border-radius: 4px;
+     padding-left: 5px; /* Add padding for background visibility */
+     padding-right: 5px;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Utility */
+a {
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Utility class to hide sections */
+.hidden-section {
+    display: none !important;
+}

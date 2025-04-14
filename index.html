@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة بشمهندس ميدو التعليمية</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>أهلاً بك في منصة بشمهندس ميدو</h1>
+    </header>
+
+    <main>
+        <section id="login">
+            <h2>تسجيل الدخول</h2>
+            <form id="login-form">
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" name="username" required><br><br>
+
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <label for="role">الدور:</label>
+                <select id="role" name="role">
+                    <option value="student">طالب</option>
+                    <option value="instructor">مدرب</option>
+                    <option value="admin">مدير</option>
+                </select><br><br>
+
+                 <button type="submit">دخول</button>
+             </form>
+             <p><a href="#" id="forgot-password-link">نسيت كلمة المرور؟</a></p>
+             <p>ليس لديك حساب؟ <a href="#" id="show-register-link">سجل الآن</a></p>
+         </section>
+
+         <section id="register" class="hidden-section"> <!-- Add hidden-section class -->
+            <h2>تسجيل حساب جديد</h2>
+            <form id="register-form">
+                <label for="reg-username">اسم المستخدم:</label>
+                <input type="text" id="reg-username" name="reg-username" required><br><br>
+
+                <label for="reg-age">العمر:</label>
+                <input type="number" id="reg-age" name="reg-age" required min="1"><br><br>
+
+                <label for="reg-email">البريد الإلكتروني:</label>
+                <input type="email" id="reg-email" name="reg-email" required><br><br>
+
+                <label for="reg-password">كلمة المرور:</label>
+                <input type="password" id="reg-password" name="reg-password" required><br><br>
+
+                <label for="reg-role">الدور:</label>
+                <select id="reg-role" name="reg-role">
+                    <option value="student">طالب</option>
+                    <option value="instructor">مدرس</option>
+                    <!-- Admin role should likely not be selectable here -->
+                </select><br><br>
+
+                <button type="submit">سجل الآن</button>
+            </form>
+             <p>لديك حساب بالفعل؟ <a href="#" id="show-login-link-from-register">سجل الدخول</a></p>
+         </section>
+
+         <section id="forgot-password" class="hidden-section"> <!-- Add hidden-section class -->
+            <h2>إعادة تعيين كلمة المرور</h2>
+            <form id="forgot-password-form-step1">
+                <p>أدخل بريدك الإلكتروني المسجل لإرسال كود إعادة التعيين.</p>
+                <label for="forgot-email">البريد الإلكتروني:</label>
+                <input type="email" id="forgot-email" name="forgot-email" required><br><br>
+                <button type="submit">إرسال الكود</button>
+                 <p><a href="#" id="show-login-link-from-forgot">العودة لتسجيل الدخول</a></p>
+            </form>
+             <form id="forgot-password-form-step2" style="display: none;">
+                <p>تم إرسال كود التحقق إلى بريدك (محاكاة). أدخله هنا.</p>
+                <p><strong>الكود (للتجربة): <span id="simulated-code"></span></strong></p>
+                <label for="reset-code">كود التحقق:</label>
+                <input type="text" id="reset-code" name="reset-code" required><br><br>
+                 <label for="new-password">كلمة المرور الجديدة:</label>
+                <input type="password" id="new-password" name="new-password" required><br><br>
+                <button type="submit">إعادة تعيين كلمة المرور</button>
+                 <p><a href="#" id="show-login-link-from-forgot2">العودة لتسجيل الدخول</a></p>
+            </form>
+         </section>
+     </main>
+
+    <footer>
+        <p>&copy; 2025 منصة بشمهندس ميدو</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

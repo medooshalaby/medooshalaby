@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - منصة بشمهندس ميدو</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>لوحة التحكم</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="#" id="logout-link">تسجيل الخروج</a></li>
+                <!-- Add more navigation links based on user role later -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>مرحباً بك، [اسم المستخدم]!</h2>
+        <!-- Dashboard content will be dynamically loaded based on user role -->
+        <div id="dashboard-content">
+            <p>هنا ستظهر لوحة التحكم الخاصة بك.</p>
+            <!-- Example sections (to be shown/hidden based on role) -->
+            <section id="admin-dashboard" style="display: none;">
+                <h3>لوحة تحكم المدير</h3>
+                <p>أدوات التحكم الشاملة بالمنصة:</p>
+                <section id="enrollment-requests" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                    <h4>طلبات التسجيل المعلقة</h4>
+                    <ul id="pending-requests-list">
+                        <!-- Placeholder Requests - JS will manage this later -->
+                        <li>
+                            <span>الطالب "Ahmed" يطلب التسجيل في "كورس وايت بورد وذكاء اصطناعي"</span>
+                            <button class="approve-request" data-user="Ahmed" data-course="ai-whiteboard">موافقة</button>
+                            <button class="deny-request" data-user="Ahmed" data-course="ai-whiteboard">رفض</button>
+                        </li>
+                         <li>
+                            <span>الطالب "Sara" يطلب التسجيل في "كورس فيديوهات متنوعة"</span>
+                            <button class="approve-request" data-user="Sara" data-course="misc-videos">موافقة</button>
+                            <button class="deny-request" data-user="Sara" data-course="misc-videos">رفض</button>
+                        </li>
+                        <!-- End Placeholder -->
+                        <p id="no-pending-requests" style="display: none;">لا توجد طلبات تسجيل معلقة حالياً.</p>
+                    </ul>
+                </section>
+
+                <section id="account-requests" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                    <h4>طلبات إنشاء الحسابات المعلقة</h4>
+                    <ul id="pending-account-requests-list">
+                        <!-- JS will populate this -->
+                        <p id="no-pending-account-requests" style="display: none;">لا توجد طلبات إنشاء حسابات معلقة حالياً.</p>
+                    </ul>
+                </section>
+
+                <section id="discussion-moderation" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                    <h4>مشاركات المناقشة المعلقة</h4>
+                    <ul id="pending-discussion-posts-list">
+                        <!-- JS will populate this -->
+                        <p id="no-pending-discussion-posts" style="display: none;">لا توجد مشاركات مناقشة معلقة حالياً.</p>
+                    </ul>
+                </section>
+
+                <section id="certificate-management" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                    <h4>إدارة الشهادات (محاكاة الرفع)</h4>
+                    <form id="assign-certificate-form">
+                         <label for="certificate-file">اختر ملف الشهادة:</label>
+                         <input type="file" id="certificate-file" name="certificate-file" required accept=".pdf,.jpg,.png" style="display: block; margin-bottom: 10px;"><br>
+
+                         <label for="assign-certificate-user">تعيين لـ:</label>
+                         <select id="assign-certificate-user" name="assign-certificate-user" required style="width: calc(100% - 22px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                             <option value="">-- اختر مستخدم --</option>
+                             <!-- JS will populate this -->
+                         </select><br>
+
+                         <button type="submit" style="background-color: #17a2b8; border-color: #17a2b8;">تعيين الشهادة</button>
+                    </form>
+                    <p><i>(ملاحظة: هذه محاكاة لتعيين شهادة. لا يتم رفع ملفات فعلية.)</i></p>
+                 </section>
+
+                 <section id="user-enrollment-management" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                    <h4>إدارة تسجيلات المستخدمين</h4>
+                    <div>
+                        <label for="manage-enrollment-user">اختر مستخدم:</label>
+                        <select id="manage-enrollment-user" name="manage-enrollment-user" required style="width: calc(100% - 22px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="">-- اختر مستخدم --</option>
+                            <!-- JS will populate this -->
+                        </select>
+                    </div>
+                    <div id="user-current-courses" style="margin-top: 10px; display: none;"> <!-- Initially hidden until a user is selected -->
+                        <h5>الكورسات المسجل بها حالياً:</h5>
+                        <ul id="current-courses-list">
+                            <!-- JS will populate this. Example structure:
+                            <li>
+                                <span>Course Name</span>
+                                <button class="remove-course-from-user" data-course-id="course_id">إزالة</button>
+                            </li>
+                            -->
+                            <p id="no-current-courses" style="display: none;">هذا المستخدم غير مسجل في أي كورسات حالياً.</p>
+                        </ul>
+                    </div>
+                    <div id="add-course-to-user" style="margin-top: 15px; display: none;"> <!-- Initially hidden until a user is selected -->
+                        <h5>إضافة كورس للمستخدم:</h5>
+                        <label for="add-course-select">اختر كورس:</label>
+                        <select id="add-course-select" name="add-course-select" style="width: calc(70% - 22px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="">-- اختر كورس --</option>
+                            <!-- JS will populate this with available courses not already enrolled -->
+                             <option value="ai-whiteboard">كورس وايت بورد وذكاء اصطناعي</option>
+                             <option value="misc-videos">كورس فيديوهات متنوعة</option>
+                             <!-- Add more courses as needed -->
+                        </select>
+                        <button id="add-course-button" style="padding: 10px 15px;">إضافة الكورس</button>
+                        <p id="add-course-status" style="margin-top: 5px; color: green; display: none;"></p> <!-- For feedback -->
+                    </div>
+                </section>
+
+                 <section id="course-content-editor" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                     <h4>إدارة محتوى الكورسات</h4>
+                     <div>
+                         <label for="edit-course-select">اختر الكورس للتعديل:</label>
+                         <select id="edit-course-select" name="edit-course-select" required style="width: calc(100% - 22px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                             <option value="">-- اختر كورس --</option>
+                             <!-- JS will populate this -->
+                         </select>
+                     </div>
+                     <div id="lesson-editors-container" style="margin-top: 15px;">
+                         <!-- JS will populate this area with lesson editors -->
+                         <p id="select-course-prompt">يرجى اختيار كورس لعرض دروسه وتعديلها.</p>
+                     </div>
+                     <p id="course-editor-status" style="margin-top: 10px; color: green; display: none;"></p>
+                     <p style="font-size: 0.9em; color: #666;"><i>ملاحظة: يتم حفظ التغييرات مؤقتًا في المتصفح. لتحديث ملف <code>courses.json</code> بشكل دائم، يلزم وجود نظام خلفي (backend).</i></p>
+                 </section>
+
+                 <hr>
+                <h4>الإدارة العامة</h4>
+                <ul>
+                    <li><a href="course-ai-whiteboard.html">إدارة كورس وايت بورد وذكاء اصطناعي</a></li>
+                    <li><a href="course-misc-videos.html">إدارة كورس فيديوهات متنوعة</a></li>
+                    <li><a href="course-montage.html">إدارة كورس مونتاج</a></li>
+                    <li><a href="course-photoshop.html">إدارة كورس فوتوشوب</a></li>
+                    <li><a href="course-advertising.html">إدارة كورس اعلانات</a></li>
+                    <li><a href="course-canva.html">إدارة كورس كانفا</a></li>
+                    <li><a href="course-motion-graphics.html">إدارة كورس موشن جرافيك</a></li>
+                    <li><a href="#">إدارة المستخدمين (طلاب/مدربين)</a></li>
+                    <li><a href="#">مراجعة الإحصائيات والتقارير</a></li>
+                    <li><a href="#">إعدادات المنصة</a></li>
+                </ul>
+            </section>
+            <section id="instructor-dashboard" style="display: none;">
+                <h3>لوحة تحكم المدرب</h3>
+                <p>إدارة كورساتك وطلابك:</p>
+                <ul>
+                    <li><a href="course-ai-whiteboard.html">كورس وايت بورد وذكاء اصطناعي</a></li>
+                    <li><a href="course-misc-videos.html">كورس فيديوهات متنوعة</a></li>
+                    <li><a href="#">الطلاب المسجلون في كورساتك</a></li>
+                    <li><a href="#">إضافة/تعديل محتوى الكورسات</a></li>
+                    <li><a href="#">تصحيح الواجبات والاختبارات</a></li>
+                    <li><a href="#">التواصل مع الطلاب</a></li>
+                </ul>
+            </section>
+            <section id="student-dashboard" style="display: none;">
+                <h3>لوحة تحكم الطالب</h3>
+
+                <section id="student-enrolled-courses">
+                     <h4>الكورسات المسجل بها</h4>
+                     <ul id="enrolled-courses-list">
+                         <!-- JS will populate this based on approvals -->
+                         <p id="no-enrolled-courses">لم تسجل في أي كورسات بعد.</p>
+                     </ul>
+                </section>
+
+                <hr>
+
+                <section id="student-available-courses">
+                     <h4>الكورسات المتاحة للتسجيل</h4>
+                     <ul id="available-courses-list">
+                         <li>
+                             <span>كورس وايت بورد وذكاء اصطناعي</span>
+                             <!-- Removed عرض المحتوى link -->
+                             <button class="request-enrollment" data-course-id="ai-whiteboard" data-course-name="كورس وايت بورد وذكاء اصطناعي">طلب تسجيل</button>
+                         </li>
+                         <li>
+                             <span>كورس فيديوهات متنوعة</span>
+                              <!-- Removed عرض المحتوى link -->
+                             <button class="request-enrollment" data-course-id="misc-videos" data-course-name="كورس فيديوهات متنوعة">طلب تسجيل</button>
+                         </li>
+                         <li>
+                             <span>كورس مونتاج</span>
+                             <button class="request-enrollment" data-course-id="montage" data-course-name="كورس مونتاج">طلب تسجيل</button>
+                         </li>
+                         <li>
+                             <span>كورس فوتوشوب</span>
+                             <button class="request-enrollment" data-course-id="photoshop" data-course-name="كورس فوتوشوب">طلب تسجيل</button>
+                         </li>
+                         <li>
+                             <span>كورس اعلانات</span>
+                             <button class="request-enrollment" data-course-id="advertising" data-course-name="كورس اعلانات">طلب تسجيل</button>
+                         </li>
+                         <li>
+                             <span>كورس كانفا</span>
+                             <button class="request-enrollment" data-course-id="canva" data-course-name="كورس كانفا">طلب تسجيل</button>
+                         </li>
+                         <li>
+                             <span>كورس موشن جرافيك</span>
+                             <button class="request-enrollment" data-course-id="motion-graphics" data-course-name="كورس موشن جرافيك">طلب تسجيل</button>
+                         </li>
+                     </ul>
+                </section>
+
+                 <hr>
+
+                 <section id="student-progress">
+                    <h4>التقدم والدرجات</h4>
+                    <ul>
+                        <li><a href="#">عرض الدرجات والتقدم</a></li>
+                        <li><a href="#">الوصول إلى الشهادات (عند إكمال الكورسات)</a></li>
+                    </ul>
+                 </section>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 منصة بشمهندس ميدو</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
